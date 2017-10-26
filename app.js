@@ -11,9 +11,6 @@ const argv = require('yargs').argv;
 
 const command = argv._[0];
 
-console.log('Command ', argv._[0]);
-console.log('yargs ', argv);
-
 if (command === 'add'){
   notes.addNote(argv.title, argv.body);
 }else if(command === 'list'){
