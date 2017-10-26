@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/sandeepthukral/udemy-nodejs-course/issues"
   },
-  "homepage": "https://github.com/sandeepthukral/udemy-nodejs-course#readme"
+  "homepage": "https://github.com/sandeepthukral/udemy-nodejs-course#readme",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
 }
