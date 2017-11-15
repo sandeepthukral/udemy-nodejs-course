@@ -12,7 +12,12 @@ const argv = require('yargs').argv;
 const command = argv._[0];
 
 if (command === 'add'){
-  notes.addNote(argv.title, argv.body);
+  var note = notes.addNote(argv.title, argv.body);
+  if (note){
+    console.log(`Added note with title ${note.title} and body ${note.body}`);
+  } else {
+    console.log('Duplicate note foound. Skipping!');
+  }
 }else if(command === 'list'){
   notes.listNotes();
 }else if(command === 'read'){
