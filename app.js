@@ -2,26 +2,28 @@
 
 console.log('Starting app.js');
 
-const fs = require('fs');
-const _ = require('lodash');
-
 const notes = require('./notes.js');
-
 const argv = require('yargs').argv;
-
 const command = argv._[0];
 
 if (command === 'add'){
-  var note = notes.addNote(argv.title, argv.body);
+  const note = notes.addNote(argv.title, argv.body);
   if (note){
-    console.log(`Added note with title ${note.title} and body ${note.body}`);
+    console.log(`Note created`);
+    notes.logNote(note);
   } else {
     console.log('Duplicate note foound. Skipping!');
   }
 }else if(command === 'list'){
   notes.listNotes();
 }else if(command === 'read'){
-  notes.getNote(argv.title);
+  var readNote = notes.getNote(argv.title);
+  if (readNote){
+    console.log('Note found');
+    notes.logNote(readNote);
+  } else {
+    console.log(`Note not found`);
+  }
 }else if(command === 'remove'){
   var wasRemoved = notes.deleteNote(argv.title);
   var message = wasRemoved ? `Note removed` : `Note not found`;
