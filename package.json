@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/sandeepthukral/udemy-nodejs-course#readme",
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "eslint": "^4.11.0",
+    "yargs": "*"
   }
 }
