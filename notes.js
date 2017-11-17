@@ -1,5 +1,4 @@
 const fs = require('fs');
-console.log('Starting notes.js');
 
 const FILE = 'notes-data.json';
 var fetchNotes = () => {
@@ -34,9 +33,7 @@ var addNote = (title, body) => {
   
 }
 
-var listNotes = () => {
-  console.log('Listing notes');
-}
+var listNotes = () => fetchNotes()
 
 var getNote = (title) => {
   var notes = fetchNotes();

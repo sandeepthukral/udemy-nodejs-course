@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-console.log('Starting app.js');
-
 const notes = require('./notes.js');
 const argv = require('yargs').argv;
 const command = argv._[0];
@@ -15,7 +13,9 @@ if (command === 'add'){
     console.log('Duplicate note foound. Skipping!');
   }
 }else if(command === 'list'){
-  notes.listNotes();
+  const listedNotes = notes.listNotes();
+  console.log(`Printing ${listedNotes.length} note(s)`);
+  listedNotes.forEach((note) => notes.logNote(note));
 }else if(command === 'read'){
   var readNote = notes.getNote(argv.title);
   if (readNote){
