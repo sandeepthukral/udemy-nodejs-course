@@ -1,6 +1,6 @@
 var person = {
-  name: 'Sandeep'
-}
+    name: 'Sandeep'
+};
 
 person.age = 49;
 
