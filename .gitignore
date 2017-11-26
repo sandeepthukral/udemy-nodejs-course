@@ -1,3 +1,5 @@
 node_modules
 notes-data.json
 .DS_Store
+weather-app/geocode/geocode.json
+weather-app/weather/weather.json
