@@ -1,6 +1,5 @@
-var request = require('request');
-
 const yargs = require('yargs');
+const geocode = require('./geocode/geocode');
 
 var argv = yargs
   .options({
@@ -15,26 +14,10 @@ var argv = yargs
   .alias('help', 'h')
   .argv;
 
-console.log(argv);
-
-const encodedURIComponent = encodeURIComponent(argv.address);
-
-var requestURI = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedURIComponent}`;
-requestURI += encodeURIComponent(argv.a);
-
-request({
-  url: requestURI,
-  json: true
-}, (error, response, body) => {
-  if (error){
-    console.log('Unable to connect to Google Service');
-  } else if (body.status === 'OK'){
-    console.log(`Address: ${body.results[0].formatted_address}`);
-    console.log(`Lat: ${body.results[0].geometry.location.lat}`);
-    console.log(`Lon: ${body.results[0].geometry.location.lng}`);
-  } else if (body.status === 'ZERO_RESULTS'){
-    console.log('Unable to find that address');
+geocode.geocodeAddress(argv.address, (errorMessage, result) => {
+  if (errorMessage){
+    console.log(errorMessage);
   } else {
-    console.log(`This should not get printed ${body.status}`);
+    console.log(JSON.stringify(result, undefined, 2));
   }
 });
