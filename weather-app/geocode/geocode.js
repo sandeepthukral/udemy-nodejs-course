@@ -18,7 +18,7 @@ var geocodeAddress = function (address, callback) {
                 longitude: body.results[0].geometry.location.lng
             });
         } else if (body.status === 'ZERO_RESULTS'){
-            callback('Unable to find that address');
+            callback(`Unable to find that address.`);
         } else {
         console.log(`This should not get printed ${body.status}`);
         }
