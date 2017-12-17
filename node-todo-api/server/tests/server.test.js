@@ -30,4 +30,21 @@ describe('post /todos', () => {
         .catch((e) => done(e));
       });
   });
+
+  it('should not create a todo with incorrect input', (done) => {
+    request(app)
+      .post('/todos')
+      .send()
+      .expect(400)
+      .end((err) => {
+        if(err){
+          return done(err);
+        }
+        Todo.find().then((todos) => {
+          expect(todos.length).toBe(0);
+          done();
+        })
+        .catch((e) => done(e));
+      });
+  });
 });
